@@ -6,7 +6,7 @@ import authRoutes from "./routes/authRoutes";
 import userRoutes from "./routes/userRoutes";
 import postRoutes from "./routes/postRoutes"
 
-const app: Application = express();
+export const app: Application = express();
 
 app.use(cors())
 app.use(express.json());

@@ -1,5 +1,4 @@
 import PostModel from "../models/PostModel";
-import mongoose from "mongoose";
 import {Response, Request} from "express";
 
 export const createPost = async (req: Request, res: Response) => {
@@ -23,3 +22,58 @@ export const getPost = async (req: Request, res: Response) => {
       res.status(500).json(error);
     }
   };
+
+
+
+export const updatePost = async (req: Request, res: Response) => {
+  const postId = req.params.id;
+  const { userId } = req.body;
+
+  try {
+    const post = await PostModel.findById(postId);
+    if (post!.userId === userId) {
+      await post!.updateOne({ $set: req.body });
+      res.status(200).json("Post Updated");
+    } else {
+      res.status(403).json("Action forbidden");
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+
+export const deletePost = async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const { userId } = req.body;
+
+  try {
+    const post = await PostModel.findById(id);
+    if (post!.userId === userId) {
+      await post!.deleteOne();
+      res.status(200).json("POst deleted successfully");
+    } else {
+      res.status(403).json("Action forbidden");
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+export const likePost = async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const { userId } = req.body;
+
+  try {
+    const post: any = await PostModel.findById(id);
+    if (!post.likes.includes(userId)) {
+      await post!.updateOne({ $push: { likes: userId } });
+      res.status(200).json("Post liked");
+    } else {
+      await post!.updateOne({ $pull: { likes: userId } });
+      res.status(200).json("Post Unliked");
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};

@@ -8,10 +8,6 @@
     "dev": "nodemon --config nodemon.json ./src/server.ts",
     "test": "jest"
   },
-
-  "jest": {
-    "setupFilesAfterEnv": ["jest-extended/all"]
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -1,6 +1,6 @@
+import 'jest-extended';
 import request from "supertest";
 import {app} from "../server";
-import 'jest-extended';
 
 describe("POST /register", () => {
     it("Create new user to app", async() => {

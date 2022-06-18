@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoutes from "./routes/authRoutes";
 import userRoutes from "./routes/userRoutes";
+import postRoutes from "./routes/postRoutes"
 
 const app: Application = express();
 
@@ -13,6 +14,7 @@ app.use(express.static('public'));
 app.use('/images', express.static('images'));
 app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
+app.use("/post", postRoutes);
 dotenv.config();
 
 mongoose.connect(process.env.MONGODB_URI as string).then(() => {

@@ -13,7 +13,22 @@ describe("POST /register", () => {
             lastname: "Test"
         })
 
+        const expectedNewUser = {
+            username: expect.any(String),
+            password: expect.any(String),
+            firstname: expect.any(String),
+            lastname: expect.any(String),
+            isAdmin: true,
+            followers: [],
+            following: [],
+            _id: expect.any(String),
+            createdAt: expect.any(String),
+            updatedAt: expect.any(String),
+            __v: 0
+        }
+
         const data = newUser.body;
-        
+        expect(data).toBeObject();
+        expect(data).toMatchObject(expectedNewUser)
     })
 })

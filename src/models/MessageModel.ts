@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import { IMessage } from "../types/IMessage";
 
-const MessageSchema = new mongoose.Schema(
+const MessageSchema = new mongoose.Schema<IMessage>(
     {
       chatId: {
         type: String,

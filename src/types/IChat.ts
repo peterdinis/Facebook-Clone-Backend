@@ -1,4 +1,4 @@
 export interface IChat {
-    members: Array<any>;
+    members:any
     timestamps?: Date
 }

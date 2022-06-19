@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import {IPost} from "../types/IPost"
 
-const postSchema = new mongoose.Schema(
+const postSchema = new mongoose.Schema<IPost>(
   {
     userId: { type: String, required: true },
     desc: String,

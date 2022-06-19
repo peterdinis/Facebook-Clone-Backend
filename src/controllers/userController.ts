@@ -1,5 +1,4 @@
 import UserModel from "../models/UserModel";
-import bcrypt from "bcrypt";
 import {Request, Response} from "express";
 
 export const getUser = async (req: Request, res: Response) => {

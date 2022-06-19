@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoutes from "./routes/authRoutes";
 import userRoutes from "./routes/userRoutes";
-import postRoutes from "./routes/postRoutes"
+import postRoutes from "./routes/postRoutes";
 
 export const app: Application = express();
 
